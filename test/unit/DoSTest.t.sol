@@ -31,6 +31,12 @@ contract DoSTest is Test {
         dos.enter();
         uint256 gasCostB = gasStartB - gasleft();
 
+        for (uint256 i = 0; i < 1000; i++) {
+            // added by me
+            vm.prank(address(uint160(i)));
+            dos.enter();
+        }
+
         uint256 gasStartC = gasleft();
         vm.prank(personC);
         dos.enter();
